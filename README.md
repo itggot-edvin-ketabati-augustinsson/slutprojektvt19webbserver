@@ -1,4 +1,4 @@
-# slutprojektvt19webbserver
+﻿# slutprojektvt19webbserver
 
 # Projektplan
 
@@ -12,7 +12,7 @@ Se frågor ställda till en själv samt frågor ställda av dig.
 ## 2. Vyer (sidor)
 Login sida (Första man ser)
 En profilsida med ställda frågor + svar
-Sida med mottagna frågor
+Sida med mottagna frågor + för att svara
 Sida med alla användare man kan fråga
 Sida för att ställa frågan
 
