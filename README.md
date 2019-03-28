@@ -21,28 +21,28 @@ Se ./Diagram/Sekvens
 
 ## 4. Arkitektur (Beskriv filer och mappar)
 slutprojekt19webbserver  
-  .git  
-  Database  
-    model.rb  
-    qna.db  
-  Diagram  
-    ER  
-      ERslutprojekt.drawio  
-    Sekvens  
-      AnswerQuestion.PNG  
-      AskingQuestion.PNG  
-      SucessfulLogin.PNG  
-  Public  
-  Views  
-    Profile  
-      browse.slim  
-      login.slim  
-      profile.slim  
-    Questions  
-      ask.slim  
-      recieved.slim  
-  controller.rb  
-  README.md  
+--.git  
+--Database  
+----model.rb  
+----qna.db  
+--Diagram  
+----ER  
+------ERslutprojekt.drawio  
+----Sekvens  
+------AnswerQuestion.PNG  
+------AskingQuestion.PNG  
+------SucessfulLogin.PNG  
+--Public  
+--Views  
+----Profile  
+------browse.slim  
+------login.slim  
+------profile.slim  
+----Questions  
+------ask.slim  
+------recieved.slim  
+--controller.rb  
+--README.md  
 
 ## 5. (Databas med ER-diagram)
 Se ./Diagram/ER
