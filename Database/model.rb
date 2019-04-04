@@ -1,4 +1,5 @@
 require 'sqlite3'
+require 'bcrypt'
 
 def open_db_link()
     db = SQLite3::Database.new('Database/qna.db')
@@ -30,4 +31,9 @@ def login(name, pass)
     else
         return false
     end
+end
+
+def get_questions(user_id)
+    db = open_db_link()
+    return db.execute("SELECT * FROM questions WHERE ToId =(?)", user_id)
 end

@@ -38,7 +38,10 @@ post('/login') do
 end
 
 get('/profile') do
-    slim(:"Profile/profile")
+    questions = get_questions(session[:user_id])
+    slim(:"Profile/profile", locals:{
+        questions: questions,
+    })
 end
 
 get('/error') do
