@@ -16,6 +16,7 @@ En profilsida med ställda frågor + svar
 Sida med mottagna frågor  
 Sida med alla användare man kan fråga  
 Sida för att ställa frågan  
+Error sida  
 
 ## 3. Funktionalitet (med sekvensdiagram)
 Se ./Diagram/Sekvens
@@ -35,10 +36,15 @@ slutprojekt19webbserver
 ------SucessfulLogin.PNG  
 --Public  
 --Views  
+----Error  
+------error.slim  
+----Layout  
+------layout.slim  
 ----Profile  
 ------browse.slim  
 ------login.slim  
 ------profile.slim  
+------register.slim  
 ----Questions  
 ------ask.slim  
 ------recieved.slim  
