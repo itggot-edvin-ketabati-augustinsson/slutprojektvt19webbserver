@@ -10,7 +10,8 @@ Användaren kan svara på eller ta bort frågor.
 Se frågor ställda till en själv samt frågor ställda av dig.  
 
 ## 2. Vyer (sidor)
-Login sida (Första man ser)  
+Login sida (Första man ser)
+Registrering  
 En profilsida med ställda frågor + svar  
 Sida med mottagna frågor  
 Sida med alla användare man kan fråga  
