@@ -6,6 +6,16 @@ require_relative './Database/model.rb'
 
 enable :sessions
 
+secure_routes = ['/profile']
+
+before do
+    if secure_routes.include? request.path()
+        if session[:loggedin] != true
+            redirect('/error')
+        end
+    end
+end
+
 get('/') do
     slim(:"Profile/login")
 end
@@ -27,6 +37,11 @@ post('/login') do
     end
 end
 
+get('/profile') do
+    slim(:"Profile/profile")
+end
+
 get('/error') do
+    session.destroy
     slim(:"Error/error")
 end
