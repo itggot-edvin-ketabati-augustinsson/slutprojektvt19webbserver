@@ -3,7 +3,8 @@ div id="questions"
     - questions.each do |element|
         article
             div class="controls"
-                form action="/answer/#{element["QuestionsId"]}" method="GET"
+                form action="/answer/#{element["QuestionId"]}" method="POST"
+                    input type='text' placeholder='Answer:' name='answer'
                     button type="submit" value=""
                         i.material-icons forum
                 form action="/delete/#{element["QuestionId"]}" method="POST"

@@ -66,6 +66,12 @@ post('/ask/:id') do
     end
 end
 
+post('/answer/:id') do 
+    question_id = params["id"].to_i
+    answer = params["answer"]
+    answer_question(question_id, answer)
+end
+
 get('/recieved') do
     questions = get_questions(session[:user_id])
     slim(:"Questions/recieved", locals:{
