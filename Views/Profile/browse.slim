@@ -2,6 +2,7 @@ link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesh
 div id="users"
     - users.each do |element|
         article
+            h3 Användare:
             label #{element["Username"]}
             div class="controls"
                 form action="/ask/#{element["UserId"]}" method="POST"

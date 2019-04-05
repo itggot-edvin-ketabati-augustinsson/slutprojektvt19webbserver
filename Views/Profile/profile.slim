@@ -2,17 +2,19 @@ link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesh
 div id="questions"
     - questions.each do |element|
         article
+            h3 Fråga:
+            label #{element["Question"]}
+            br
+            -if element["Answer"] != "" && element["Answer"] != nil
+                h3 Svar:
+                label #{element["Answer"]}
             div class="controls"
                 form action="/delete/#{element["QuestionId"]}" method="POST"
                     button type="submit" value=""
                         i.material-icons delete
-            label #{element["Question"]}
-            br
-            -if element["Answer"] != "" && element["Answer"] != nil
-                label #{element["Answer"]}
+
 form action="/logout" method="POST"
     input type="submit" value="Logut"
-
 form action="/recieved" method="GET"
     input type="submit" value="Recieved questions"
 form action="/browse" method="GET"

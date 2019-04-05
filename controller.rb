@@ -70,6 +70,7 @@ post('/answer/:id') do
     question_id = params["id"].to_i
     answer = params["answer"]
     answer_question(question_id, answer)
+    redirect('/recieved')
 end
 
 get('/recieved') do
