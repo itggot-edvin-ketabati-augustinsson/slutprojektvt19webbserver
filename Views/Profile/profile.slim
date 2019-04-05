@@ -3,9 +3,6 @@ div id="questions"
     - questions.each do |element|
         article
             div class="controls"
-                form action="/answer/#{element["QuestionsId"]}" method="GET"
-                    button type="submit" value=""
-                        i.material-icons forum
                 form action="/delete/#{element["QuestionId"]}" method="POST"
                     button type="submit" value=""
                         i.material-icons delete
@@ -15,3 +12,8 @@ div id="questions"
                 label #{element["Answer"]}
 form action="/logout" method="POST"
     input type="submit" value="Logut"
+
+form action="/recieved" method="GET"
+    input type="submit" value="Recieved questions"
+form action="/browse" method="GET"
+    input type="submit" value="Browse users"
