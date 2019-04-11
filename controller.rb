@@ -91,3 +91,7 @@ post('/delete/:id') do
     delete(params["id"])
     redirect('/profile')
 end
+
+error 404 do
+    redirect('/error')
+end
