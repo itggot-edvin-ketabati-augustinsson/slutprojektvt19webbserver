@@ -6,7 +6,7 @@ require_relative './Database/model.rb'
 
 enable :sessions
 
-secure_routes = ['/profile','/answer','/recieved','/browse']
+secure_routes = ['/profile','/answer','/recieved','/browse','/delete/:id']
 
 before do
     if secure_routes.include? request.path()
@@ -85,4 +85,9 @@ get('/browse') do
     slim(:"Profile/browse", locals:{
         users: users,
     })
+end
+
+post('/delete/:id') do
+    delete(params["id"])
+    redirect('/profile')
 end

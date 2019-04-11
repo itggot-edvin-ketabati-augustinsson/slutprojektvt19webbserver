@@ -56,3 +56,8 @@ def fetch_users()
     db = open_db_link()
     return db.execute("SELECT UserId, Username FROM users")
 end
+
+def delete(id)
+    db = open_db_link_nohash()
+    db.execute("DELETE FROM questions WHERE QuestionId = (?)", id)
+end
