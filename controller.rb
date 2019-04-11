@@ -82,7 +82,7 @@ end
 
 get('/browse') do
     users = fetch_users()
-    slim(:"Profile/browse", locals:{
+    slim(:"Questions/browse", locals:{
         users: users,
     })
 end
