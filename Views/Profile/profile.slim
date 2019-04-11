@@ -2,11 +2,11 @@ link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesh
 div id="questions"
     - questions.each do |element|
         article
-            h3 Fråga:
+            h3 Din Fråga:
             label #{element["Question"]}
             br
             -if element["Answer"] != "" && element["Answer"] != nil
-                h3 Svar:
+                h3 #{element["Username"]}s svar:
                 label #{element["Answer"]}
             div class="controls"
                 form action="/delete/#{element["QuestionId"]}" method="POST"

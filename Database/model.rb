@@ -34,12 +34,12 @@ end
 
 def get_questions(user_id)
     db = open_db_link()
-    return db.execute("SELECT * FROM questions WHERE ToId =(?)", user_id)
+    return db.execute("SELECT questions.QuestionId, questions.FromId, questions.ToId, questions.Answer, questions.Question, users.Username FROM questions INNER JOIN users ON questions.FromId = users.UserId WHERE questions.ToId =(?)", user_id)
 end
 
 def get_asked_questions(user_id)
     db = open_db_link()
-    return db.execute("SELECT * FROM questions WHERE FromId =(?)", user_id)
+    return db.execute("SELECT questions.QuestionId, questions.FromId, questions.ToId, questions.Answer, questions.Question, users.Username FROM questions INNER JOIN users ON questions.ToId = users.UserId WHERE FromId =(?)", user_id)
 end
 
 def answer_question(id, answer)
