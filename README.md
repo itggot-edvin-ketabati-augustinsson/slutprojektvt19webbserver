@@ -14,8 +14,7 @@ Login sida (Första man ser)
 Registrering  
 En profilsida med ställda frågor + svar  
 Sida med mottagna frågor  
-Sida med alla användare man kan fråga  
-Sida för att ställa frågan  
+Sida med alla användare man kan fråga + möjlighet att ställa frågan  
 Error sida  
 
 ## 3. Funktionalitet (med sekvensdiagram)
@@ -41,12 +40,11 @@ slutprojekt19webbserver
 ----Layout  
 ------layout.slim  
 ----Profile  
-------browse.slim  
 ------login.slim  
 ------profile.slim  
 ------register.slim  
 ----Questions  
-------ask.slim  
+------browse.slim  
 ------recieved.slim  
 --controller.rb  
 --README.md  
