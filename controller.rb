@@ -5,6 +5,7 @@ require 'bcrypt'
 require_relative './Database/model.rb'
 
 enable :sessions
+set :show_exceptions, :after_handler
 
 secure_routes = ['/profile','/answer','/recieved','/browse','/delete/:id']
 
@@ -42,11 +43,6 @@ get('/profile') do
     slim(:"Profile/profile", locals:{
         questions: questions,
     })
-end
-
-get('/error') do
-    session.destroy
-    slim(:"Error/error")
 end
 
 post('/logout') do
@@ -93,5 +89,20 @@ post('/delete/:id') do
 end
 
 error 404 do
-    redirect('/error')
+    slim(:"Error/error_404")
+end
+
+error 500 do
+    slim(:"Error/error_500")
+end
+
+error do
+    slim(:"Error/error", locals:{
+        error: env['sinatra.error'].message,
+    })
+end
+
+get('/error') do
+    session.destroy
+    slim(:"Error/error_auth")
 end
