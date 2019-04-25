@@ -15,7 +15,7 @@ Registrering
 En profilsida med ställda frågor + svar  
 Sida med mottagna frågor  
 Sida med alla användare man kan fråga + möjlighet att ställa frågan  
-Error sida  
+Error sidor, 404, 500, autentisering misslyckades samt en vy för oväntade fel.  
 
 ## 3. Funktionalitet (med sekvensdiagram)
 Se ./Diagram/Sekvens
@@ -36,6 +36,9 @@ slutprojekt19webbserver
 --Public  
 --Views  
 ----Error  
+------error_404.slim  
+------error_500.slim  
+------error_auth.slim  
 ------error.slim  
 ----Layout  
 ------layout.slim  
