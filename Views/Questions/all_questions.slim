@@ -1,11 +1,14 @@
 link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
+
 div id="questions"
     - questions.each do |element|
         article
-            h3 Användare:
-            label #{element["Username"]}
+            h3 Fråga av #{element["Username"]}:
+            label #{element["Question"]}
+            - if element["Answer"] != nil
+                h3 Svar:
+                label #{element["Answer"]}
             div class="controls"
-                form action="/ask/#{element["UserId"]}" method="POST"
-                    input type='text' placeholder='Question:' name='question'
+                form action="/like/#{element["QuestionId"]}" method="POST"
                     button type="submit" value=""
-                        i.material-icons forum
+                        i.material-icons thumb_up

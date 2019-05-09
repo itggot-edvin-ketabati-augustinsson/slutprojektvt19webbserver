@@ -88,10 +88,19 @@ get('/browse') do
     })
 end
 
+get('/all_questions') do
+    questions = Question.fetch_all()
+    slim(:"Questions/all_questions", locals:{
+        questions: questions,
+    })
+end
+
 post('/delete/:id') do
     Question.delete(params["id"])
     redirect('/profile')
 end
+
+
 
 # error 404 do
 #     slim(:"Error/error_404")

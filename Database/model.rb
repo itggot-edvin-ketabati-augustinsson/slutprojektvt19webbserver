@@ -41,9 +41,9 @@ module Model
     end
 
     module Question
-        def fetch_all()
+        def self.fetch_all()
             db = Model::open_db_link()
-            return db.execute("SELECT * FROM questions")
+            return db.execute("SELECT questions.QuestionId, questions.FromId, questions.ToId, questions.Answer, questions.Question, users.Username FROM questions INNER JOIN users ON questions.FromId = users.UserId")
         end
 
         def self.get_questions(user_id)
