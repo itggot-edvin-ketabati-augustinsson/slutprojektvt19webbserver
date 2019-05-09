@@ -105,8 +105,13 @@ end
 post('/like/:id') do
     qid = params["id"]
     uid = session[:user_id]
-    Question.like(qid,uid)
-    redirect('/all_questions')
+    result = Question.like(qid,uid)
+    p result
+    if result[:error] == true
+        result[:message]
+    else
+        redirect('/all_questions')
+    end
 end
 
 # error 404 do

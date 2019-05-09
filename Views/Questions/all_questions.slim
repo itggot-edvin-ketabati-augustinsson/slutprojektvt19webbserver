@@ -1,5 +1,4 @@
 link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
-
 div id="questions"
     - questions.each do |element|
         article
@@ -10,7 +9,7 @@ div id="questions"
                 label #{element["Answer"]}
             - postlikes = 0
             - likes.each do |like|
-                - if like["PostId"] == element["PostId"]
+                - if like["QuestionId"] == element["QuestionId"]
                     - postlikes += 1
             h3 Likes: #{postlikes}
             div class="controls"

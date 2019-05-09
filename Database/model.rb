@@ -75,20 +75,24 @@ module Model
             db = Model::open_db_link()
             return db.execute("SELECT * FROM likes")
         end
+
+        def self.like(qid,uid)
+            db = Model::open_db_link_nohash()
+            already_liked = db.execute("SELECT QuestionId FROM likes WHERE UserId = ?",uid)
+            already_liked = already_liked.flatten()
+            if already_liked.include? qid.to_i
+                return error = {
+                    error: true,
+                    message: "You have already liked this post",
+                } 
+            else
+                db.execute("INSERT INTO likes(QuestionId, UserId) VALUES(?,?)",qid,uid)
+                return error= {
+                    error: false,
+                }
+            end
+        end
+
     end
 
 end
-# module Model 
-#     module UserId
-#     end
-#     module Posts
-#         def self.answer_question(params)
-#             Gör någon skit.
-#         end
-#     end
-# end 
-# Model::Posts.answer_question(params)
-# Om man skriver:
-# include "moder-module-namn"
-# Anropar man:
-# Posts.answer_question(params)
