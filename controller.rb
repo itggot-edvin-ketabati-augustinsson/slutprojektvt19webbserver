@@ -4,16 +4,18 @@ require 'sqlite3'
 require 'bcrypt'
 require_relative './Database/model.rb'
 
+include Model
+
 enable :sessions
 set :show_exceptions, :after_handler
 
-secure_routes = ['/profile','/answer','/recieved','/browse','/delete/:id']
+insecure_routes = ['/','/register','/create_account','/login','/logout', '/error']
 
 before do
-    if secure_routes.include? request.path()
+    unless insecure_routes.include? request.path()
         if session[:loggedin] != true
             redirect('/error')
-        end
+        end 
     end
 end
 
@@ -26,20 +28,23 @@ get('/register') do
 end
 
 post('/create_account') do
-    register(params["name"], params["pass"])
+    User.register(params["name"], params["pass"])
     redirect('/')
 end
 
 post('/login') do
-    if login(params["name"], params["pass"]) == true
+    loginfo = User.login(params["name"], params["pass"])
+    if loginfo[:loggedin] == true
+        session[:loggedin] = true
+        session[:user_id] = loginfo[:user_id]
         redirect('/profile')
     else
-        redirect('/error')
+        loginfo[:message]
     end
 end
 
 get('/profile') do
-    questions = get_asked_questions(session[:user_id])
+    questions = Question.get_asked_questions(session[:user_id])
     slim(:"Profile/profile", locals:{
         questions: questions,
     })
@@ -55,7 +60,7 @@ post('/ask/:id') do
    to_id = params["id"].to_i
    question = params["question"]
     if to_id != from_id
-        ask(to_id,from_id,question)
+        Question.ask(to_id,from_id,question)
         redirect('/profile')
     else
         redirect('/error')
@@ -65,42 +70,42 @@ end
 post('/answer/:id') do 
     question_id = params["id"].to_i
     answer = params["answer"]
-    answer_question(question_id, answer)
+    Question.answer_question(question_id, answer)
     redirect('/recieved')
 end
 
 get('/recieved') do
-    questions = get_questions(session[:user_id])
+    questions = Question.get_questions(session[:user_id])
     slim(:"Questions/recieved", locals:{
         questions: questions,
     })
 end
 
 get('/browse') do
-    users = fetch_users()
+    users = User.fetch_users()
     slim(:"Questions/browse", locals:{
         users: users,
     })
 end
 
 post('/delete/:id') do
-    delete(params["id"])
+    Question.delete(params["id"])
     redirect('/profile')
 end
 
-error 404 do
-    slim(:"Error/error_404")
-end
+# error 404 do
+#     slim(:"Error/error_404")
+# end
 
-error 500 do
-    slim(:"Error/error_500")
-end
+# error 500 do
+#     slim(:"Error/error_500")
+# end
 
-error do
-    slim(:"Error/error", locals:{
-        error: env['sinatra.error'].message,
-    })
-end
+# error do
+#     slim(:"Error/error", locals:{
+#         error: env['sinatra.error'].message,
+#     })
+# end
 
 get('/error') do
     session.destroy

@@ -1,0 +1,11 @@
+link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
+div id="questions"
+    - questions.each do |element|
+        article
+            h3 Användare:
+            label #{element["Username"]}
+            div class="controls"
+                form action="/ask/#{element["UserId"]}" method="POST"
+                    input type='text' placeholder='Question:' name='question'
+                    button type="submit" value=""
+                        i.material-icons forum
