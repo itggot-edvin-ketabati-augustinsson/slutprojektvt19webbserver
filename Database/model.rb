@@ -71,6 +71,10 @@ module Model
             db.execute("DELETE FROM questions WHERE QuestionId = (?)", id)
         end
 
+        def self.fetch_likes()
+            db = Model::open_db_link()
+            return db.execute("SELECT * FROM likes")
+        end
     end
 
 end

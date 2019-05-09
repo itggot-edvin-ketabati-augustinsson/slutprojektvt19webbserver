@@ -8,6 +8,11 @@ div id="questions"
             - if element["Answer"] != nil
                 h3 Svar:
                 label #{element["Answer"]}
+            - postlikes = 0
+            - likes.each do |like|
+                - if like["PostId"] == element["PostId"]
+                    - postlikes += 1
+            h3 Likes: #{postlikes}
             div class="controls"
                 form action="/like/#{element["QuestionId"]}" method="POST"
                     button type="submit" value=""

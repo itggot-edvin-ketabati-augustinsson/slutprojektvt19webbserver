@@ -89,9 +89,11 @@ get('/browse') do
 end
 
 get('/all_questions') do
+    likes = Question.fetch_likes()
     questions = Question.fetch_all()
     slim(:"Questions/all_questions", locals:{
         questions: questions,
+        likes: likes,
     })
 end
 
@@ -100,7 +102,12 @@ post('/delete/:id') do
     redirect('/profile')
 end
 
-
+post('/like/:id') do
+    qid = params["id"]
+    uid = session[:user_id]
+    Question.like(qid,uid)
+    redirect('/all_questions')
+end
 
 # error 404 do
 #     slim(:"Error/error_404")
