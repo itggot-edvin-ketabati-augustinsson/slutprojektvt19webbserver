@@ -61,3 +61,19 @@ def delete(id)
     db = open_db_link_nohash()
     db.execute("DELETE FROM questions WHERE QuestionId = (?)", id)
 end
+
+
+# module Model 
+#     module UserId
+#     end
+#     module Posts
+#         def self.answer_question(params)
+#             Gör någon skit.
+#         end
+#     end
+# end 
+# Model::Posts.answer_question(params)
+# Om man skriver:
+# include "moder-module-namn"
+# Anropar man:
+# Posts.answer_question(params)
