@@ -37,6 +37,11 @@ module Model
         def self.login(name, pass)
             db = Model::open_db_link()
             result = db.execute("SELECT Password, UserId FROM users WHERE Username =(?)", name)
+            unless result[0] != nil
+                return loginfo = {
+                    message: "Incorrect username or password"
+                }
+            end
             encrypted_pass = result[0]["Password"]
             if BCrypt::Password.new(encrypted_pass) == pass
                 return loginfo = {

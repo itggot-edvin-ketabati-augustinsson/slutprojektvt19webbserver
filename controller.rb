@@ -9,12 +9,12 @@ include Model
 enable :sessions
 set :show_exceptions, :after_handler
 
-insecure_routes = ['/','/register','/create_account','/login','/logout', '/error']
+insecure_routes = ['/','/register','/create_account','/login','/logout', '/notloggedin']
 
 before do
     unless insecure_routes.include? request.path()
         if session[:loggedin] != true
-            redirect('/error')
+            redirect('/notloggedin')
         end 
     end
 end
@@ -67,7 +67,7 @@ post('/ask/:id') do
         Question.ask(to_id,from_id,question)
         redirect('/profile')
     else
-        redirect('/error')
+        "You can't ask yourself a question!"
     end
 end
 
@@ -118,21 +118,21 @@ post('/like/:id') do
     end
 end
 
-# error 404 do
-#     slim(:"Error/error_404")
-# end
+error 404 do
+    slim(:"Error/error_404")
+end
 
-# error 500 do
-#     slim(:"Error/error_500")
-# end
+error 500 do
+    slim(:"Error/error_500")
+end
 
-# error do
-#     slim(:"Error/error", locals:{
-#         error: env['sinatra.error'].message,
-#     })
-# end
+error do
+    slim(:"Error/error", locals:{
+        error: env['sinatra.error'].message,
+    })
+end
 
-get('/error') do
+get('/notloggedin') do
     session.destroy
     slim(:"Error/error_auth")
 end
