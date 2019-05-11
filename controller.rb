@@ -28,8 +28,12 @@ get('/register') do
 end
 
 post('/create_account') do
-    User.register(params["name"], params["pass"])
-    redirect('/')
+    result = User.register(params["name"], params["pass"], params["repeat_pass"])
+    if result[:error] == false
+        redirect('/')
+    else
+        result[:message]
+    end
 end
 
 post('/login') do

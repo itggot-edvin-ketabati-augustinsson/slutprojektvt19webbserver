@@ -11,10 +11,27 @@ module Model
     end
 
     module User
-        def self.register(name, pass)
+        def self.register(name, pass, repeat_pass)
             db = Model::open_db_link_nohash()
-            password = BCrypt::Password.create(pass)
-            db.execute("INSERT INTO users(Username, Password) VALUES( (?), (?) )",name, password)
+            user = db.execute("SELECT UserId FROM users WHERE Username = (?)", name)
+            if user[0] != nil 
+                return result  = {
+                    error: true,
+                    message: "User with this name already exists."
+                }
+            end
+            if repeat_pass == pass
+                password = BCrypt::Password.create(pass)
+                db.execute("INSERT INTO users(Username, Password) VALUES( (?), (?) )",name, password)
+                return result = {
+                    error: false,
+                }
+            else
+                return result = {
+                    error: true,
+                    message: "Passwords don't match."
+                }
+            end
         end
 
         def self.login(name, pass)
