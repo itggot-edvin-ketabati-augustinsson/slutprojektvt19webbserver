@@ -86,6 +86,7 @@ module Model
         def self.delete(id)
             db = Model::open_db_link_nohash()
             db.execute("DELETE FROM questions WHERE QuestionId = (?)", id)
+            db.execute("DELETE FROM likes WHERE QuestionId = (?)", id)
         end
 
         def self.fetch_likes()
