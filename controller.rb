@@ -130,6 +130,9 @@ get('/recieved') do
     })
 end
 
+# Displays all users and allows to ask them a question
+#
+# See Model#User#fetch_users
 get('/browse') do
     users = User.fetch_users()
     slim(:"Questions/browse", locals:{
@@ -137,6 +140,10 @@ get('/browse') do
     })
 end
 
+# Displays all questions and allows user to like question
+#
+# See Model#User#fetch_all
+# See Model#User#fetch_likes
 get('/all_questions') do
     likes = Question.fetch_likes()
     questions = Question.fetch_all()
@@ -146,11 +153,22 @@ get('/all_questions') do
     })
 end
 
+# Deletes post with specific ID
+#
+# @param [Integer] id, The unique ID of the question being removed
+#
+# See Model#Question#delete
 post('/delete/:id') do
     Question.delete(params["id"]) # FIXA MATCHANDE ID
     redirect('/profile')
 end
 
+# Likes post with specific ID
+#
+# @param [Integer] qid, The unique ID of the question being liked
+# @param [Integer] uid, The unique ID of the user liking
+#
+# See Model#Question#like
 post('/like/:id') do
     qid = params["id"]
     uid = session[:user_id]
@@ -162,20 +180,28 @@ post('/like/:id') do
     end
 end
 
+# Displays page for error 404
+#
 error 404 do
     slim(:"Error/error_404")
 end
 
+# Displays page for error 500
+#
 error 500 do
     slim(:"Error/error_500")
 end
 
+# Displays page for unexpected error
+#
 error do
     slim(:"Error/error", locals:{
         error: env['sinatra.error'].message,
     })
 end
 
+# Displays page for unauthorized attempt to access routes or data
+#
 get('/notloggedin') do
     session.destroy
     slim(:"Error/error_auth")
