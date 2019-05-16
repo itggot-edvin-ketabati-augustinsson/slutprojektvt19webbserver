@@ -6,6 +6,6 @@ div id="users"
             label #{element["Username"]}
             div class="controls"
                 form action="/ask/#{element["UserId"]}" method="POST"
-                    input type='text' placeholder='Question:' name='question'
+                    input type='text' placeholder='Question:' name='question' required="true"
                     button type="submit" value=""
                         i.material-icons forum

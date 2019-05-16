@@ -1,6 +1,8 @@
 h2 Register for ASCIIT
+- if flash[:error]
+    =flash[:error]
 form action='/create_account' method='POST'
-            input type='text' placeholder='name' name='name'
-            input type='password' placeholder='pass' name='pass'
-            input type='password' placeholder='Repeat password' name='repeat_pass'
+            input type='text' placeholder='name' name='name' required="true"
+            input type='password' placeholder='pass' name='pass' required="true"
+            input type='password' placeholder='Repeat password' name='repeat_pass' required="true"
             input type='submit' value='Register' 

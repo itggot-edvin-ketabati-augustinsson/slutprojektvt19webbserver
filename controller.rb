@@ -2,6 +2,7 @@ require 'slim'
 require 'sinatra'
 require 'sqlite3'
 require 'bcrypt'
+require 'sinatra/flash'
 require_relative './Database/model.rb'
 
 include Model
@@ -39,11 +40,12 @@ end
 #
 # See Model#User#register
 post('/create_account') do
-    result = User.register(params["name"], params["pass"], params["repeat_pass"])
+    result = User.register(params["name"], params["pass"], params["repeat_pass"])       #FIXA VALIDERING AV TOM INPUT
     if result[:error] == false
         redirect('/')
     else
-        result[:message]
+        flash[:error] = result[:message]
+        redirect back
     end
 end
 
@@ -60,7 +62,8 @@ post('/login') do
         session[:user_id] = loginfo[:user_id]
         redirect('/profile')
     else
-        loginfo[:message]
+        flash[:error] = loginfo[:message]
+        redirect back
     end
 end
 
@@ -109,7 +112,7 @@ end
 #
 # See Model#Question#answer_question
 post('/answer/:id') do 
-    question_id = params["id"].to_i
+    question_id = params["id"].to_i             #FIXA MATCHANDE ID
     answer = params["answer"]
     Question.answer_question(question_id, answer)
     redirect('/recieved')
@@ -144,7 +147,7 @@ get('/all_questions') do
 end
 
 post('/delete/:id') do
-    Question.delete(params["id"])
+    Question.delete(params["id"]) # FIXA MATCHANDE ID
     redirect('/profile')
 end
 
@@ -152,7 +155,6 @@ post('/like/:id') do
     qid = params["id"]
     uid = session[:user_id]
     result = Question.like(qid,uid)
-    p result
     if result[:error] == true
         result[:message]
     else

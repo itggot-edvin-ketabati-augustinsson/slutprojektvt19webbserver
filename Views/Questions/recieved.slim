@@ -11,7 +11,7 @@ div id="questions"
             div class="controls"
                 -if element["Answer"] == "" || element["Answer"] == nil
                     form action="/answer/#{element["QuestionId"]}" method="POST"
-                        input type='text' placeholder='Answer:' name='answer'
+                        input type='text' placeholder='Answer:' name='answer' required="true"
                         button type="submit" value=""
                             i.material-icons forum
                 form action="/delete/#{element["QuestionId"]}" method="POST"

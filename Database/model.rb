@@ -88,10 +88,10 @@ module Model
             db.execute("INSERT INTO questions(ToId, FromId, Question) VALUES( (?),(?),(?) )",to_id,from_id,question)
         end
 
-        def self.delete(id)
+        def self.delete(user_id,id)
             db = Model::open_db_link_nohash()
-            db.execute("DELETE FROM questions WHERE QuestionId = (?)", id)
-            db.execute("DELETE FROM likes WHERE QuestionId = (?)", id)
+            db.execute("DELETE FROM questions WHERE QuestionId = (?) AND UserId=(?)", id, user_id)
+            db.execute("DELETE FROM likes WHERE QuestionId = (?)", id)  
         end
 
         def self.fetch_likes()
