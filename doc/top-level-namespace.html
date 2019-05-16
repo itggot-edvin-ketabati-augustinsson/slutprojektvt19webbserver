@@ -75,7 +75,7 @@
   
   <dl>
       <dt>Includes:</dt>
-      <dd>Model</dd>
+      <dd><span class='object_link'><a href="Model.html" title="Model (module)">Model</a></span></dd>
   </dl>
   
   
@@ -85,6 +85,16 @@
   
 </div>
 
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Model.html" title="Model (module)">Model</a></span>
+    
+  
+    
+  
+</p>
 
 
 
@@ -441,6 +451,16 @@
 
 
   
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Model.html" title="Model (module)">Model</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Model.html#open_db_link-class_method" title="Model.open_db_link (method)">open_db_link</a></span>, <span class='object_link'><a href="Model.html#open_db_link_nohash-class_method" title="Model.open_db_link_nohash (method)">open_db_link_nohash</a></span></p>
+
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
@@ -532,8 +552,8 @@
       <pre class="code"><span class="info file"># File 'controller.rb', line 147</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/all_questions</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_likes'>likes</span> <span class='op'>=</span> <span class='const'>Question</span><span class='period'>.</span><span class='id identifier rubyid_fetch_likes'>fetch_likes</span><span class='lparen'>(</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_questions'>questions</span> <span class='op'>=</span> <span class='const'>Question</span><span class='period'>.</span><span class='id identifier rubyid_fetch_all'>fetch_all</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_likes'>likes</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Model/Question.html" title="Model::Question (module)">Question</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch_likes'><span class='object_link'><a href="Model/Question.html#fetch_likes-class_method" title="Model::Question.fetch_likes (method)">fetch_likes</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_questions'>questions</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Model/Question.html" title="Model::Question (module)">Question</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch_all'><span class='object_link'><a href="Model/Question.html#fetch_all-class_method" title="Model::Question.fetch_all (method)">fetch_all</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;Questions/all_questions&quot;</span><span class='comma'>,</span> <span class='label'>locals:</span><span class='lbrace'>{</span>
         <span class='label'>questions:</span> <span class='id identifier rubyid_questions'>questions</span><span class='comma'>,</span>
         <span class='label'>likes:</span> <span class='id identifier rubyid_likes'>likes</span><span class='comma'>,</span>
@@ -585,7 +605,7 @@
       <pre class="code"><span class="info file"># File 'controller.rb', line 136</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/browse</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_users'>users</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_fetch_users'>fetch_users</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_users'>users</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Model/User.html" title="Model::User (module)">User</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch_users'><span class='object_link'><a href="Model/User.html#fetch_users-class_method" title="Model::User.fetch_users (method)">fetch_users</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;Questions/browse&quot;</span><span class='comma'>,</span> <span class='label'>locals:</span><span class='lbrace'>{</span>
         <span class='label'>users:</span> <span class='id identifier rubyid_users'>users</span><span class='comma'>,</span>
     <span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -701,7 +721,7 @@
       <pre class="code"><span class="info file"># File 'controller.rb', line 75</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/profile</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_questions'>questions</span> <span class='op'>=</span> <span class='const'>Question</span><span class='period'>.</span><span class='id identifier rubyid_get_asked_questions'>get_asked_questions</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_questions'>questions</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Model/Question.html" title="Model::Question (module)">Question</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get_asked_questions'><span class='object_link'><a href="Model/Question.html#get_asked_questions-class_method" title="Model::Question.get_asked_questions (method)">get_asked_questions</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;Profile/profile&quot;</span><span class='comma'>,</span> <span class='label'>locals:</span><span class='lbrace'>{</span>
         <span class='label'>questions:</span> <span class='id identifier rubyid_questions'>questions</span><span class='comma'>,</span>
     <span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -772,7 +792,7 @@
       <pre class="code"><span class="info file"># File 'controller.rb', line 126</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/recieved</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_questions'>questions</span> <span class='op'>=</span> <span class='const'>Question</span><span class='period'>.</span><span class='id identifier rubyid_get_questions'>get_questions</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_questions'>questions</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Model/Question.html" title="Model::Question (module)">Question</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get_questions'><span class='object_link'><a href="Model/Question.html#get_questions-class_method" title="Model::Question.get_questions (method)">get_questions</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;Questions/recieved&quot;</span><span class='comma'>,</span> <span class='label'>locals:</span><span class='lbrace'>{</span>
         <span class='label'>questions:</span> <span class='id identifier rubyid_questions'>questions</span><span class='comma'>,</span>
     <span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -904,7 +924,7 @@
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/answer/:id</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> 
     <span class='id identifier rubyid_question_id'>question_id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>             <span class='comment'>#FIXA MATCHANDE ID
 </span>    <span class='id identifier rubyid_answer'>answer</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>answer</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
-    <span class='const'>Question</span><span class='period'>.</span><span class='id identifier rubyid_answer_question'>answer_question</span><span class='lparen'>(</span><span class='id identifier rubyid_question_id'>question_id</span><span class='comma'>,</span> <span class='id identifier rubyid_answer'>answer</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="Model/Question.html" title="Model::Question (module)">Question</a></span></span><span class='period'>.</span><span class='id identifier rubyid_answer_question'><span class='object_link'><a href="Model/Question.html#answer_question-class_method" title="Model::Question.answer_question (method)">answer_question</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_question_id'>question_id</span><span class='comma'>,</span> <span class='id identifier rubyid_answer'>answer</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/recieved</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1014,7 +1034,7 @@
    <span class='id identifier rubyid_to_id'>to_id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
    <span class='id identifier rubyid_question'>question</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>question</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_to_id'>to_id</span> <span class='op'>!=</span> <span class='id identifier rubyid_from_id'>from_id</span>
-        <span class='const'>Question</span><span class='period'>.</span><span class='id identifier rubyid_ask'>ask</span><span class='lparen'>(</span><span class='id identifier rubyid_to_id'>to_id</span><span class='comma'>,</span><span class='id identifier rubyid_from_id'>from_id</span><span class='comma'>,</span><span class='id identifier rubyid_question'>question</span><span class='rparen'>)</span>
+        <span class='const'><span class='object_link'><a href="Model/Question.html" title="Model::Question (module)">Question</a></span></span><span class='period'>.</span><span class='id identifier rubyid_ask'><span class='object_link'><a href="Model/Question.html#ask-class_method" title="Model::Question.ask (method)">ask</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_to_id'>to_id</span><span class='comma'>,</span><span class='id identifier rubyid_from_id'>from_id</span><span class='comma'>,</span><span class='id identifier rubyid_question'>question</span><span class='rparen'>)</span>
         <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/profile</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
     <span class='kw'>else</span>
         <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>You can&#39;t ask yourself a question!</span><span class='tstring_end'>&quot;</span></span>
@@ -1121,7 +1141,7 @@
       <pre class="code"><span class="info file"># File 'controller.rb', line 42</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/create_account</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_register'>register</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pass</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>repeat_pass</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>       <span class='comment'>#FIXA VALIDERING AV TOM INPUT
+    <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Model/User.html" title="Model::User (module)">User</a></span></span><span class='period'>.</span><span class='id identifier rubyid_register'><span class='object_link'><a href="Model/User.html#register-class_method" title="Model::User.register (method)">register</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pass</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>repeat_pass</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>       <span class='comment'>#FIXA VALIDERING AV TOM INPUT
 </span>    <span class='kw'>if</span> <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='symbol'>:error</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>false</span>
         <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
     <span class='kw'>else</span>
@@ -1193,7 +1213,7 @@
       <pre class="code"><span class="info file"># File 'controller.rb', line 161</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/delete/:id</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
-    <span class='const'>Question</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># FIXA MATCHANDE ID
+    <span class='const'><span class='object_link'><a href="Model/Question.html" title="Model::Question (module)">Question</a></span></span><span class='period'>.</span><span class='id identifier rubyid_delete'><span class='object_link'><a href="Model/Question.html#delete-class_method" title="Model::Question.delete (method)">delete</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># FIXA MATCHANDE ID
 </span>    <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/profile</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1284,7 +1304,7 @@
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/like/:id</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_qid'>qid</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_uid'>uid</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'>Question</span><span class='period'>.</span><span class='id identifier rubyid_like'>like</span><span class='lparen'>(</span><span class='id identifier rubyid_qid'>qid</span><span class='comma'>,</span><span class='id identifier rubyid_uid'>uid</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Model/Question.html" title="Model::Question (module)">Question</a></span></span><span class='period'>.</span><span class='id identifier rubyid_like'><span class='object_link'><a href="Model/Question.html#like-class_method" title="Model::Question.like (method)">like</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_qid'>qid</span><span class='comma'>,</span><span class='id identifier rubyid_uid'>uid</span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='symbol'>:error</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>true</span>
         <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='symbol'>:message</span><span class='rbracket'>]</span>
     <span class='kw'>else</span>
@@ -1378,7 +1398,7 @@
       <pre class="code"><span class="info file"># File 'controller.rb', line 58</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/login</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_loginfo'>loginfo</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_login'>login</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pass</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_loginfo'>loginfo</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Model/User.html" title="Model::User (module)">User</a></span></span><span class='period'>.</span><span class='id identifier rubyid_login'><span class='object_link'><a href="Model/User.html#login-class_method" title="Model::User.login (method)">login</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pass</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_loginfo'>loginfo</span><span class='lbracket'>[</span><span class='symbol'>:loggedin</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>true</span>
         <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:loggedin</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span>
         <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_loginfo'>loginfo</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span>
@@ -1443,7 +1463,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu May 16 10:00:18 2019 by
+  Generated on Thu May 16 10:34:48 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.19 (ruby-2.4.2).
 </div>
