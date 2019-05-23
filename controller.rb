@@ -112,7 +112,7 @@ end
 #
 # See Model#Question#answer_question
 post('/answer/:id') do 
-    question_id = params["id"].to_i             #FIXA MATCHANDE ID
+    question_id = params["id"].to_i
     answer = params["answer"]
     Question.answer_question(question_id, answer)
     redirect('/recieved')
@@ -159,7 +159,7 @@ end
 #
 # See Model#Question#delete
 post('/delete/:id') do
-    Question.delete(params["id"]) # FIXA MATCHANDE ID
+    Question.delete(params["id"])
     redirect('/profile')
 end
 
